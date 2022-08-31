@@ -1,40 +1,70 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect, useRef } from 'react';
 import './App.css';
 // import Header from './components/Header'
 
 
+function App() {
+  const [renk,setRenk] = useState("blue");
+  const renkDegisimi = useRef(null);
 
- function App() {
+   const degis=()=>{
+    document.body.style.backgroundColor = renkDegisimi.current.value;
+    setRenk(()=>renkDegisimi.current.value)
+   }
+  return (
+    <div className='App'>
+<p>Ingilis</p>
+<input type="text" ref={renkDegisimi} onChange={degis} />
+<p>{renk}</p>
+    </div>
+  );
+}
 
-const [timer,setTimer] = useState(5);
 
 
-useEffect(()=>{
-
-  
-  if(timer!==0){
-    const interval = setInterval(()=>{
-      setTimer(timer-1)
-      },1000)
 
 
-return ()=>clearInterval(interval);
 
-  }
+
+
+
+
+
+
+
+
+
+//  function App() {
+
+// const [timer,setTimer] = useState(5);
+
+
+// useEffect(()=>{
+
+
+//   if(timer!==0){
+//     const interval = setInterval(()=>{
+//       setTimer(timer-1)
+//       },1000)
+
+
+// return ()=>clearInterval(interval);
+
+//   }
    
 
 
 
-},[timer])
+// },[timer])
 
 
-  return (
-    <div className='App'>
-   <div style={{height:"250px",width:"250px",backgroundColor:"blue",borderRadius:"50%",color:"white",fontSize:"60px",margin:"10px auto",lineHeight:"250px"}}>{timer}
-   </div>
-    </div>
-  );
-}
+//   return (
+//     <div className='App'>
+//    <div style={{height:"250px",width:"250px",backgroundColor:"blue",borderRadius:"50%",color:"white",fontSize:"60px",margin:"10px auto",lineHeight:"250px"}}>{timer}
+//    </div>
+//     </div>
+//   );
+// }
 
 
 
